@@ -55,7 +55,6 @@ public class Student
 	}
 
 	@Override
-	// Created with Eclipse's toString generator
 	public String toString() 
 	{
 		return "Student [name=" + name + ", major=" + major + ", gpa=" + gpa + "]";

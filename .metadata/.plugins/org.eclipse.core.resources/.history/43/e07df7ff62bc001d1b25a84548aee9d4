@@ -4,18 +4,12 @@
  * First Name: Joseph
  */
 
+
 public class Student 
 {
 	private String name;
 	private String major;
 	private double gpa;
-	
-	public Student()
-	{
-		this.name = null;
-		this.major = null;
-		this.gpa = 0.0;
-	}
 	
 	public Student(String name, String major, double gpa) 
 	{
@@ -55,7 +49,6 @@ public class Student
 	}
 
 	@Override
-	// Created with Eclipse's toString generator
 	public String toString() 
 	{
 		return "Student [name=" + name + ", major=" + major + ", gpa=" + gpa + "]";

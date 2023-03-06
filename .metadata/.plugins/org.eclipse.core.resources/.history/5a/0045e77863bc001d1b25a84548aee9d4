@@ -18,10 +18,8 @@ public class StudentTest
 		student2.setMajor("CE");
 		student2.setGpa(3.3);
 		
-		// Print student1
 		System.out.println(student1.toString());
 		
-		// Print student2
 		System.out.println(student2.toString());
 	}
 }
