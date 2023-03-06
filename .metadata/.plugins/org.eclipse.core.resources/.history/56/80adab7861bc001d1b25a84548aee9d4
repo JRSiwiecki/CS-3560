@@ -1,0 +1,13 @@
+/*
+ * BroncoID: 014758458
+ * Last Name: Siwiecki
+ * First Name: Joseph
+ */
+
+
+public class Student 
+{
+	private String name;
+	private String major;
+	private double gpa;
+}

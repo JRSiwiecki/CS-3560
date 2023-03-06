@@ -54,19 +54,5 @@ public class Student
 		return "Student [name=" + name + ", major=" + major + ", gpa=" + gpa + "]";
 	}
 	
-	public boolean equals(Student student)
-	{
-		if (!this.name.equals(student.name))
-		{
-			return false;
-		}
-		
-		if (!this.major.equals(student.major))
-		{
-			return false;
-		}
-		
-		return true;
-	}
 	
 }
