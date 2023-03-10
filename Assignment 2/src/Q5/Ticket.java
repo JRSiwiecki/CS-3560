@@ -1,5 +1,10 @@
 public class Ticket implements SaleableItem
 {
+    public Ticket()
+    {
+        
+    }
+    
     @Override
     public void sellCopy()
     {

@@ -1,5 +1,10 @@
 public class Magazine implements SaleableItem
 {
+    public Magazine()
+    {
+
+    }
+    
     @Override
     public void sellCopy()
     {
