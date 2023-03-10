@@ -13,7 +13,9 @@ public class Student
 	
 	public Student()
 	{
-		
+		name = null;
+		major = null;
+		gpa = 0.0;
 	}
 	
 	public Student(String name, String major, double gpa) 
