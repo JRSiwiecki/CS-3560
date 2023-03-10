@@ -8,6 +8,7 @@ public class Professor extends Employee
         this.field = field;
     }
 
+    @Override
     public double calculateSalary()
     {
         return super.calculateSalary() * 30;
