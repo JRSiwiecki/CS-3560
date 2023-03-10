@@ -8,6 +8,6 @@ public class Team
     public Team()
     {
         code = 0;
-        players = null;
+        players = new ArrayList<Player>();
     }
 }
