@@ -1,11 +1,12 @@
 import javax.persistence.*;
-import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name="customer")
 public class Customer 
 {
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id")
 	private int id;
 	
@@ -18,8 +19,18 @@ public class Customer
 	@Column(name="email")
 	private String email;
 	
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="address_id")
 	private Address address;
-	private ArrayList<Order> orders;
+	
+	@OneToMany(mappedBy="customer",
+				cascade= {CascadeType.PERSIST})
+	private List<Order> orders;
+	
+	public Customer()
+	{
+		
+	}
 	
 	public int getId() {
 		return id;
@@ -61,11 +72,11 @@ public class Customer
 		this.address = address;
 	}
 	
-	public ArrayList<Order> getOrders() {
+	public List<Order> getOrders() {
 		return orders;
 	}
 	
-	public void setOrders(ArrayList<Order> orders) {
+	public void setOrders(List<Order> orders) {
 		this.orders = orders;
 	}
 	

@@ -6,6 +6,7 @@ import java.sql.Date;
 public class Order 
 {
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="number")
 	private int number;
 	
@@ -18,7 +19,14 @@ public class Order
 	@Column(name="price")
 	private double price;
 	
+	@ManyToOne
+	@JoinColumn(name="customer_id")
 	private Customer customer;
+	
+	public Order()
+	{
+		
+	}
 
 	public int getNumber() {
 		return number;

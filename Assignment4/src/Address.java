@@ -5,6 +5,7 @@ import javax.persistence.*;
 public class Address 
 {
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id")
 	private int id;
 	
@@ -18,7 +19,12 @@ public class Address
 	private String state;
 	
 	@Column(name="zip_code")
-	private String zipCode;
+	private int zipCode;
+	
+	public Address()
+	{
+		
+	}
 	
 	public int getId() {
 		return id;
@@ -44,10 +50,10 @@ public class Address
 	public void setState(String state) {
 		this.state = state;
 	}
-	public String getZipCode() {
+	public int getZipCode() {
 		return zipCode;
 	}
-	public void setZipCode(String zipCode) {
+	public void setZipCode(int zipCode) {
 		this.zipCode = zipCode;
 	}
 	
