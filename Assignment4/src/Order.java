@@ -5,9 +5,17 @@ import java.sql.Date;
 @Table(name="order")
 public class Order 
 {
+	@Id
+	@Column(name="number")
 	private int number;
+	
+	@Column(name="date")
 	private Date date;
+	
+	@Column(name="item")
 	private String item;
+	
+	@Column(name="price")
 	private double price;
 	
 	private Customer customer;

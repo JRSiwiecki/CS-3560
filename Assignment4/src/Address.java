@@ -4,11 +4,28 @@ import javax.persistence.*;
 @Table(name="address")
 public class Address 
 {
+	@Id
+	@Column(name="id")
+	private int id;
+	
+	@Column(name="street")
 	private String street;
+	
+	@Column(name="city")
 	private String city;
+	
+	@Column(name="state")
 	private String state;
+	
+	@Column(name="zip_code")
 	private String zipCode;
 	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	public String getStreet() {
 		return street;
 	}
