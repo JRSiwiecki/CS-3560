@@ -6,6 +6,14 @@ public class CustomerGUI
 	private static final int WINDOW_WIDTH = 1000;
 	private static final int WINDOW_HEIGHT = 600;
 	
+	JTextField nameField;
+    JTextField phoneField;
+    JTextField emailField;
+    JTextField streetField;
+    JTextField cityField;
+    JTextField stateField;
+    JTextField zipCodeField;
+	
 	public CustomerGUI()
 	{
 		frame = new JFrame("Customer");
@@ -28,13 +36,13 @@ public class CustomerGUI
         JLabel zipCodeLabel = new JLabel("Zip Code");
         
         // Create text fields
-        JTextField nameField = new JTextField(20);
-        JTextField phoneField = new JTextField(20);
-        JTextField emailField = new JTextField(20);
-        JTextField streetField = new JTextField(20);
-        JTextField cityField = new JTextField(20);
-        JTextField stateField = new JTextField(20);
-        JTextField zipCodeField = new JTextField(20);
+        nameField = new JTextField(20);
+        phoneField = new JTextField(20);
+        emailField = new JTextField(20);
+        streetField = new JTextField(20);
+        cityField = new JTextField(20);
+        stateField = new JTextField(20);
+        zipCodeField = new JTextField(20);
         
         // Create buttons
         JButton searchButton = new JButton("Search");
@@ -141,13 +149,36 @@ public class CustomerGUI
             CreateCustomer.createCustomer(name,  phone,  email, 
         			 street,  city,  state, zipCode);
             
+            clearFields();
+            
             JOptionPane.showMessageDialog(null, "Customer: [" + name + "] successfully added.");
         });
         
         // Update customer
         updateButton.addActionListener(e -> {
-            String name = nameField.getText();
-            JOptionPane.showMessageDialog(null, "Hello, " + name + "!");
+        	Customer tempCustomer = new Customer();
+            
+            tempCustomer.setName(nameField.getText());
+            tempCustomer.setPhone(phoneField.getText());
+            tempCustomer.setEmail(emailField.getText());
+            
+            Address tempAddress = new Address();
+            
+            tempAddress.setStreet(streetField.getText());
+            tempAddress.setCity(cityField.getText());
+            tempAddress.setState(stateField.getText());
+            
+            tempAddress.setZipCode( 
+            		(zipCodeField.getText().equals(""))
+          				? -1 : Integer.parseInt(zipCodeField.getText()));
+            
+            tempCustomer.setAddress(tempAddress);
+            
+            UpdateCustomer.updateCustomer(tempCustomer);
+            
+            clearFields();
+            
+            JOptionPane.showMessageDialog(null, "Customer: [" + tempCustomer.getName() + "] successfully updated.");
         });
         
         // Delete customer
@@ -172,13 +203,7 @@ public class CustomerGUI
             
             DeleteCustomer.deleteCustomer(tempCustomer);
             
-            nameField.setText("");
-            phoneField.setText("");
-            emailField.setText("");
-            streetField.setText("");
-            cityField.setText("");
-            stateField.setText("");
-            zipCodeField.setText("");
+            clearFields();
             
             JOptionPane.showMessageDialog(null, "Customer: [" + tempCustomer.getName() + "] successfully deleted.");
         });
@@ -187,6 +212,17 @@ public class CustomerGUI
 	public void showWindow()
 	{
 		frame.setVisible(true);
+	}
+	
+	public void clearFields()
+	{
+		nameField.setText("");
+        phoneField.setText("");
+        emailField.setText("");
+        streetField.setText("");
+        cityField.setText("");
+        stateField.setText("");
+        zipCodeField.setText("");
 	}
 
 	
