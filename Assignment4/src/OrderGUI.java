@@ -7,6 +7,8 @@ public class OrderGUI
 	private static final int WINDOW_WIDTH = 1000;
 	private static final int WINDOW_HEIGHT = 600;
 	
+	List<Customer> customers = ReadCustomers.readCustomers();
+	
 	JTextField numberField;
     JTextField dateField;
     
@@ -105,9 +107,19 @@ public class OrderGUI
         // Search order
         searchButton.addActionListener(e -> {
         	
-            clearFields();
+            Order tempOrder = ReadOrder.readOrder(Integer.parseInt(numberField.getText()));
             
-            JOptionPane.showMessageDialog(null, "Order successfully found.");
+            if (tempOrder == null)
+            {
+            	JOptionPane.showMessageDialog(null, "No order found!");
+        		return;
+            }
+            
+            dateField.setText(tempOrder.getDate().toString());
+            customerField.setSelectedItem(tempOrder.getCustomer().getName());
+            itemField.setSelectedItem(tempOrder.getItem());
+            priceField.setText(String.valueOf(tempOrder.getPrice()));
+            
         });
         
         // Add order
@@ -161,8 +173,6 @@ public class OrderGUI
 	@SuppressWarnings("unchecked")
 	public void populateCustomerBox()
 	{
-		List<Customer> customers = ReadCustomers.readCustomers();
-		
 		for (int i = 0; i < customers.size(); i++)
 		{
 			customerField.addItem(customers.get(i).getName());
