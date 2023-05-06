@@ -21,16 +21,16 @@ public class CreateCustomer
 			
 			Customer tempCustomer = new Customer();
 			
-			tempCustomer.setName("Joseph");
+			tempCustomer.setName("Jonathan");
 			tempCustomer.setPhone("626-333-1804");
-			tempCustomer.setEmail("JRSiwiecki@gmail.com");
+			tempCustomer.setEmail("JPSiwiecki@gmail.com");
 			
 			Address tempAddress = new Address();
 			
-			tempAddress.setStreet("1037 S Caraway Dr");
+			tempAddress.setStreet("1037 N Caraway Dr");
 			tempAddress.setCity("Whittier");
 			tempAddress.setState("California");
-			tempAddress.setZipCode(90601);
+			tempAddress.setZipCode(90501);
 			
 			tempCustomer.setAddress(tempAddress);
 			

@@ -2,7 +2,7 @@ import javax.persistence.*;
 import java.sql.Date;
 
 @Entity
-@Table(name="order")
+@Table(name="orders")
 public class Order 
 {
 	@Id

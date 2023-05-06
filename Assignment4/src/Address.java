@@ -1,7 +1,7 @@
 import javax.persistence.*;
 
 @Entity
-@Table(name="address")
+@Table(name="addresses")
 public class Address 
 {
 	@Id
