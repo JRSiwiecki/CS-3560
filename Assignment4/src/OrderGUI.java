@@ -113,7 +113,14 @@ public class OrderGUI
         // Add order
         addButton.addActionListener(e -> {
         	
-            clearFields();
+            String selectedCustomer = customerField.getSelectedItem().toString();
+        	Customer tempCustomer = ReadCustomer.readCustomer(selectedCustomer);
+        	
+        	CreateOrder.createOrder(tempCustomer, 
+            		itemField.getSelectedItem().toString(), 
+            		Double.parseDouble(priceField.getText()));
+        	
+        	clearFields();
             
             JOptionPane.showMessageDialog(null, "Order successfully placed.");
         });
@@ -151,6 +158,7 @@ public class OrderGUI
 
 	}
 	
+	@SuppressWarnings("unchecked")
 	public void populateCustomerBox()
 	{
 		List<Customer> customers = ReadCustomers.readCustomers();
@@ -162,7 +170,6 @@ public class OrderGUI
 		
 	}
 
-	
 	public static void main(String[] args)
 	{
 		OrderGUI orderGUI = new OrderGUI();
