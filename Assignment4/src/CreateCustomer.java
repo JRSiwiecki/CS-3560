@@ -4,7 +4,8 @@ import org.hibernate.cfg.Configuration;
 
 public class CreateCustomer 
 {
-	public static void main(String[] args) 
+	public static void createCustomer(String name, String phone, String email, 
+			String street, String city, String state, int zipCode) 
 	{
 		SessionFactory factory = new Configuration()
 								.configure("hibernate.cfg.xml")
@@ -21,16 +22,16 @@ public class CreateCustomer
 			
 			Customer tempCustomer = new Customer();
 			
-			tempCustomer.setName("Jonathan");
-			tempCustomer.setPhone("626-333-1804");
-			tempCustomer.setEmail("JPSiwiecki@gmail.com");
+			tempCustomer.setName(name);
+			tempCustomer.setPhone(phone);
+			tempCustomer.setEmail(email);
 			
 			Address tempAddress = new Address();
 			
-			tempAddress.setStreet("1037 N Caraway Dr");
-			tempAddress.setCity("Whittier");
-			tempAddress.setState("California");
-			tempAddress.setZipCode(90501);
+			tempAddress.setStreet(street);
+			tempAddress.setCity(city);
+			tempAddress.setState(state);
+			tempAddress.setZipCode(zipCode);
 			
 			tempCustomer.setAddress(tempAddress);
 			

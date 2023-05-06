@@ -102,25 +102,36 @@ public class CustomerGUI
         
         frame.getContentPane().add(panel);
 
-        // Add event listeners and handlers
+        // Add customer with address
         searchButton.addActionListener(e -> {
-            String name = nameField.getText();
+        	String name = nameField.getText();
+            
             JOptionPane.showMessageDialog(null, "Hello, " + name + "!");
         });
         
-     // Add event listeners and handlers
+        // Add event listeners and handlers
         addButton.addActionListener(e -> {
-            String name = nameField.getText();
-            JOptionPane.showMessageDialog(null, "Hello, " + name + "!");
+        	String name = nameField.getText();
+            String phone = phoneField.getText();
+            String email = emailField.getText();
+            String street = streetField.getText();
+            String city = cityField.getText();
+            String state = stateField.getText();
+            int zipCode =  Integer.parseInt(zipCodeField.getText());
+            
+            CreateCustomer.createCustomer( name,  phone,  email, 
+        			 street,  city,  state, zipCode);
+            
+            JOptionPane.showMessageDialog(null, "Customer: [" + name + "] successfully added.");
         });
         
-     // Add event listeners and handlers
+        // Add event listeners and handlers
         updateButton.addActionListener(e -> {
             String name = nameField.getText();
             JOptionPane.showMessageDialog(null, "Hello, " + name + "!");
         });
         
-     // Add event listeners and handlers
+        // Add event listeners and handlers
         deleteButton.addActionListener(e -> {
             String name = nameField.getText();
             JOptionPane.showMessageDialog(null, "Hello, " + name + "!");
