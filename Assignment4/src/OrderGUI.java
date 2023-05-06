@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.util.List;
+import java.sql.Date;
 
 public class OrderGUI
 {
@@ -140,7 +141,18 @@ public class OrderGUI
         // Update order
         updateButton.addActionListener(e -> {
         	
-            clearFields();
+            Order tempOrder = new Order();
+            
+            String selectedCustomer = customerField.getSelectedItem().toString();
+            tempOrder.setCustomer(ReadCustomer.readCustomer(selectedCustomer));
+            tempOrder.setDate(Date.valueOf(dateField.getText()));
+            tempOrder.setPrice(Double.parseDouble(priceField.getText()));
+            tempOrder.setNumber(Integer.parseInt(numberField.getText()));
+            tempOrder.setItem(itemField.getSelectedItem().toString());
+        	
+        	UpdateOrder.updateOrder(tempOrder);
+        	
+        	clearFields();
             
             JOptionPane.showMessageDialog(null, "Order successfully updated.");
         });
