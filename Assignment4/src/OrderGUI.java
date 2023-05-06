@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.util.List;
 
 public class OrderGUI
 {
@@ -8,8 +9,13 @@ public class OrderGUI
 	
 	JTextField numberField;
     JTextField dateField;
-    JComboBox customerField;
-    JComboBox itemField;
+    
+    @SuppressWarnings("rawtypes")
+	JComboBox customerField;
+    
+    @SuppressWarnings("rawtypes")
+	JComboBox itemField;
+    
     JTextField priceField;
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
@@ -39,6 +45,7 @@ public class OrderGUI
         // Create combo boxes
         customerField = new JComboBox();
         customerField.addItem("");
+        populateCustomerBox();
         
         itemField = new JComboBox();
         itemField.addItem("");
@@ -95,102 +102,38 @@ public class OrderGUI
         frame.getContentPane().add(panel);
 
         
-//        // Get customer
-//        searchButton.addActionListener(e -> {
-//        	String name = nameField.getText();
-//        	
-//        	Customer tempCustomer = ReadCustomer.readCustomer(name);
-//        	
-//        	if (tempCustomer == null)
-//        	{
-//        		JOptionPane.showMessageDialog(null, "No customer found!");
-//        		return;
-//        	}
-//        	
-//        	nameField.setText(tempCustomer.getName());
-//        	phoneField.setText(tempCustomer.getPhone());
-//        	emailField.setText(tempCustomer.getEmail());
-//        	
-//        	Address tempAddress = tempCustomer.getAddress();
-//        	
-//        	streetField.setText(tempAddress.getStreet());
-//        	cityField.setText(tempAddress.getCity());
-//        	stateField.setText(tempAddress.getState());
-//        	zipCodeField.setText(String.valueOf(tempAddress.getZipCode()));
-//        	
-//        });
-//        
-//        // Add customer
-//        addButton.addActionListener(e -> {
-//        	String name = nameField.getText();
-//            String phone = phoneField.getText();
-//            String email = emailField.getText();
-//            String street = streetField.getText();
-//            String city = cityField.getText();
-//            String state = stateField.getText();
-//            int zipCode =  Integer.parseInt(zipCodeField.getText());
-//            
-//            CreateCustomer.createCustomer(name,  phone,  email, 
-//        			 street,  city,  state, zipCode);
-//            
-//            clearFields();
-//            
-//            JOptionPane.showMessageDialog(null, "Customer: [" + name + "] successfully added.");
-//        });
-//        
-//        // Update customer
-//        updateButton.addActionListener(e -> {
-//        	Customer tempCustomer = new Customer();
-//            
-//            tempCustomer.setName(nameField.getText());
-//            tempCustomer.setPhone(phoneField.getText());
-//            tempCustomer.setEmail(emailField.getText());
-//            
-//            Address tempAddress = new Address();
-//            
-//            tempAddress.setStreet(streetField.getText());
-//            tempAddress.setCity(cityField.getText());
-//            tempAddress.setState(stateField.getText());
-//            
-//            tempAddress.setZipCode( 
-//            		(zipCodeField.getText().equals(""))
-//          				? -1 : Integer.parseInt(zipCodeField.getText()));
-//            
-//            tempCustomer.setAddress(tempAddress);
-//            
-//            UpdateCustomer.updateCustomer(tempCustomer);
-//            
-//            clearFields();
-//            
-//            JOptionPane.showMessageDialog(null, "Customer: [" + tempCustomer.getName() + "] successfully updated.");
-//        });
-//        
-//        // Delete customer
-//        deleteButton.addActionListener(e -> {
-//            Customer tempCustomer = new Customer();
-//            
-//            tempCustomer.setName(nameField.getText());
-//            tempCustomer.setPhone(phoneField.getText());
-//            tempCustomer.setEmail(emailField.getText());
-//            
-//            Address tempAddress = new Address();
-//            
-//            tempAddress.setStreet(streetField.getText());
-//            tempAddress.setCity(cityField.getText());
-//            tempAddress.setState(stateField.getText());
-//            
-//            tempAddress.setZipCode( 
-//            		(zipCodeField.getText().equals(""))
-//          				? -1 : Integer.parseInt(zipCodeField.getText()));
-//            
-//            tempCustomer.setAddress(tempAddress);
-//            
-//            DeleteCustomer.deleteCustomer(tempCustomer);
-//            
-//            clearFields();
-//            
-//            JOptionPane.showMessageDialog(null, "Customer: [" + tempCustomer.getName() + "] successfully deleted.");
-//        });
+        // Search order
+        searchButton.addActionListener(e -> {
+        	
+            clearFields();
+            
+            JOptionPane.showMessageDialog(null, "Order successfully found.");
+        });
+        
+        // Add order
+        addButton.addActionListener(e -> {
+        	
+            clearFields();
+            
+            JOptionPane.showMessageDialog(null, "Order successfully placed.");
+        });
+        
+        // Update order
+        updateButton.addActionListener(e -> {
+        	
+            clearFields();
+            
+            JOptionPane.showMessageDialog(null, "Order successfully updated.");
+        });
+        
+        // Delete order
+        deleteButton.addActionListener(e -> {
+        	
+            clearFields();
+            
+            JOptionPane.showMessageDialog(null, "Order successfully deleted.");
+        });
+
     }
 	
 	public void showWindow()
@@ -206,6 +149,17 @@ public class OrderGUI
         itemField.setSelectedIndex(0);
         priceField.setText("");
 
+	}
+	
+	public void populateCustomerBox()
+	{
+		List<Customer> customers = ReadCustomers.readCustomers();
+		
+		for (int i = 0; i < customers.size(); i++)
+		{
+			customerField.addItem(customers.get(i).getName());
+		}
+		
 	}
 
 	
