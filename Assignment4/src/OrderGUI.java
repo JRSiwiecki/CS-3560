@@ -148,7 +148,9 @@ public class OrderGUI
         // Delete order
         deleteButton.addActionListener(e -> {
         	
-            clearFields();
+            DeleteOrder.deleteOrder(Integer.parseInt(numberField.getText()));
+        	
+        	clearFields();
             
             JOptionPane.showMessageDialog(null, "Order successfully deleted.");
         });
