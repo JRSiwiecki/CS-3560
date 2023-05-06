@@ -138,7 +138,7 @@ public class CustomerGUI
             String state = stateField.getText();
             int zipCode =  Integer.parseInt(zipCodeField.getText());
             
-            CreateCustomer.createCustomer( name,  phone,  email, 
+            CreateCustomer.createCustomer(name,  phone,  email, 
         			 street,  city,  state, zipCode);
             
             JOptionPane.showMessageDialog(null, "Customer: [" + name + "] successfully added.");
@@ -152,8 +152,35 @@ public class CustomerGUI
         
         // Delete customer
         deleteButton.addActionListener(e -> {
-            String name = nameField.getText();
-            JOptionPane.showMessageDialog(null, "Hello, " + name + "!");
+            Customer tempCustomer = new Customer();
+            
+            tempCustomer.setName(nameField.getText());
+            tempCustomer.setPhone(phoneField.getText());
+            tempCustomer.setEmail(emailField.getText());
+            
+            Address tempAddress = new Address();
+            
+            tempAddress.setStreet(streetField.getText());
+            tempAddress.setCity(cityField.getText());
+            tempAddress.setState(stateField.getText());
+            
+            tempAddress.setZipCode( 
+            		(zipCodeField.getText().equals(""))
+          				? -1 : Integer.parseInt(zipCodeField.getText()));
+            
+            tempCustomer.setAddress(tempAddress);
+            
+            DeleteCustomer.deleteCustomer(tempCustomer);
+            
+            nameField.setText("");
+            phoneField.setText("");
+            emailField.setText("");
+            streetField.setText("");
+            cityField.setText("");
+            stateField.setText("");
+            zipCodeField.setText("");
+            
+            JOptionPane.showMessageDialog(null, "Customer: [" + tempCustomer.getName() + "] successfully deleted.");
         });
     }
 	
