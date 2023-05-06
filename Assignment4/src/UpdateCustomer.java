@@ -31,18 +31,11 @@ public class UpdateCustomer
 			customer.setId(tempCustomer.getId());
 			
 			hql = "UPDATE Customer SET name=:name, phone=:phone, email=:email WHERE id=:id";
-//					+ " street=:street, city=:city, state=:state,"
-//					+ " zip_code=:zipCode WHERE id=:id";
 			
-
 			session.createQuery(hql)
 				.setParameter("name", customer.getName())
 				.setParameter("phone", customer.getPhone())
 				.setParameter("email", customer.getEmail())
-//				.setParameter("street", tempCustomer.getAddress().getStreet())
-//				.setParameter("city", tempCustomer.getAddress().getCity())
-//				.setParameter("state", tempCustomer.getAddress().getState())
-//				.setParameter("zipCode", tempCustomer.getAddress().getZipCode())
 				.setParameter("id", customer.getId())
 				.executeUpdate();
 			
